@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<div id="root">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.20.2/babel.min.js"></script>
+    <script type="text/babel">
+
+        class App extends React.Component{
+            constructor() {
+                super();
+                this.state=({
+                    number:0
+                })
+            }
+            minus(){
+                if(this.state.number <=0){
+                    return alert("can't change less than zero")
+                }else{
+                    this.setState({
+                        number: this.state.number-1
+                    })
+                }
+            }
+            plus(){
+                this.setState({
+                    number:this.state.number+1
+            })
+            }
+
+            render(){
+                return(
+                    <div>
+                        <button onClick={()=>this.minus()}>-</button>
+                        <h1>{this.state.number}</h1>
+                        <button onClick={()=>this.plus()}>+</button>
+                    </div>
+                )
+            }
+
+        }
+        const root=ReactDOM.createRoot(document.getElementById('root'))
+        root.render(<App/>)
+
+    </script>
+
+
+</div>
+
+</body>
+</html>
